@@ -112,7 +112,7 @@ public class ProductDemo {
         GetAllProductRequestType getAllProductRequestType = new GetAllProductRequestType();
         getAllProductRequestType.setBusiness("TICKET");
         getAllProductRequestType.setLastMaxId("0");
-        getAllProductRequestType.setLimit(50);
+        getAllProductRequestType.setLimit(50);//注意limit取值范围： 50至100
         //获取Response,JsonObject格式
         JsonObject jsonObject = productClient.getAllProductJsonObject(getAllProductRequestType,"816a39440838419f9b305d52daf2d90f");
         //获取Response,API dto格式

@@ -12,7 +12,6 @@ public class BookRequestType {
     private BasicOrder basicOrder;
     private List<OrderPromotion> promotionList;
     private Integer paymentType;
-    private List<KeyValuePairType> extraParams;
     private List<AllianceExtendProperty> allianceExtendPropertys;
     private Long contractTemplateId;
 
@@ -86,14 +85,6 @@ public class BookRequestType {
 
     public void setPaymentType(Integer paymentType) {
         this.paymentType = paymentType;
-    }
-
-    public List<KeyValuePairType> getExtraParams() {
-        return extraParams;
-    }
-
-    public void setExtraParams(List<KeyValuePairType> extraParams) {
-        this.extraParams = extraParams;
     }
 
     public List<AllianceExtendProperty> getAllianceExtendPropertys() {
