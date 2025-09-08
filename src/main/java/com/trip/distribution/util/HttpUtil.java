@@ -43,5 +43,20 @@ public class HttpUtil{
                 .send();
         return response.charset(Constants.CHARSET_UTF8);
     }
+    public static HttpResponse getRefreshToken(String AID,String SID, String refresh_Token) {
+        //拼接请求url
+        String token_url_test = "https://openservice.open.uat.ctripqa.com/openserviceauth/refresh.ashx?";
+        String url = token_url_test +
+                "?aid=" + AID +
+                "&sid=" + SID +
+                "&refresh_token=" + refresh_Token;
+        HttpRequest request = HttpRequest.get(url);
+        HttpResponse response = request
+                .contentType("application/json; charset=utf-8")
+                .charset(Constants.CHARSET_UTF8)
+                .accept("application/json")
+                .send();
+        return response.charset(Constants.CHARSET_UTF8);
+    }
 
 }
