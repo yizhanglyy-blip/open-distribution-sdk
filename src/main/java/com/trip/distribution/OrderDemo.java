@@ -42,15 +42,16 @@ public class OrderDemo {
         bookingRequiredInfoRequestType.setCurrency("CNY");
         bookingRequiredInfoRequestType.setProductID(76458827L);
         bookingRequiredInfoRequestType.setPackageID(76458829L);
-
         //获取Response,JsonObject
-        JsonObject jsonObject = orderClient.bookingRequiredInfoJsonObject(bookingRequiredInfoRequestType,"517fe6dc07764f76aa7f2b427c5cfd8c");
+        JsonObject jsonObject = orderClient.bookingRequiredInfoJsonObject(bookingRequiredInfoRequestType,"b2cce56b68874e88aaa0a1ef82c635fe");
         //获取Response,API dto格式
-        BookingRequiredInfoResponseType bookingRequiredInfoResponseType = orderClient.bookingRequiredInfo(bookingRequiredInfoRequestType, "517fe6dc07764f76aa7f2b427c5cfd8c");
+        BookingRequiredInfoResponseType bookingRequiredInfoResponseType = orderClient.bookingRequiredInfo(bookingRequiredInfoRequestType, "b2cce56b68874e88aaa0a1ef82c635fe");
         System.out.println(jsonObject);
         System.out.println(GsonUtil.toJson(bookingRequiredInfoResponseType));
 
     }
+
+
     //4.1下单校验demo
     public void bookingVerify() throws ApiException {
         //构造请求参数
@@ -157,9 +158,9 @@ public class OrderDemo {
 
 
         //获取Response,JsonObject格式
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
         //获取Response,API dto格式
-        BookResponseType bookResponseType = orderClient.book(bookRequestType, "3987b7a1958c4d28945ba12c9e0a0634");
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
         System.out.println(bookResponseType);
     }
@@ -242,8 +243,12 @@ public class OrderDemo {
         bookRequestType.setPassengerList(passengerList);
 
 
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        //获取Response,JsonObject格式
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
+        System.out.println(bookResponseType);
     }
 
     //4.3创建订单demo3 无需出行人传参示例(购买2张不传出行人)
@@ -283,9 +288,9 @@ public class OrderDemo {
 //        List<Passenger> passengerList = new ArrayList<>();
 
         //获取Response,JsonObject格式
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
         //获取Response,API dto格式
-        BookResponseType bookResponseType = orderClient.book(bookRequestType, "3987b7a1958c4d28945ba12c9e0a0634");
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
         System.out.println(bookResponseType);
     }
@@ -381,8 +386,12 @@ public class OrderDemo {
         bookRequestType.setPassengerList(passengerList);
 
 
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        //获取Response,JsonObject格式
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
+        System.out.println(bookResponseType);
     }
 
     //4.3创建订单demo5 打包产品下单传参示例(三个资源的打包产品)
@@ -483,8 +492,12 @@ public class OrderDemo {
         bookRequestType.setPassengerList(passengerList);
 
 
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        //获取Response,JsonObject格式
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
+        System.out.println(bookResponseType);
     }
 
     //4.3创建订单demo6 护照、英文名传参示例
@@ -549,8 +562,12 @@ public class OrderDemo {
         passengerList.add(passenger);
         bookRequestType.setPassengerList(passengerList);
 
-        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"3987b7a1958c4d28945ba12c9e0a0634");
+        //获取Response,JsonObject格式
+        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
+        System.out.println(bookResponseType);
     }
 
     //4.4获取订单状态demo
