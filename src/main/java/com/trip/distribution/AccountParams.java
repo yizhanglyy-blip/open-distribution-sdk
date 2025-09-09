@@ -10,10 +10,10 @@ public class AccountParams {
      * account parameters
      **/
     // replace with your credentials
-    public static String AID = "123";
-    public static String SID = "456";
-    public static String KEY = "abcdefg";
-    public static String TOKEN = "tdgd23333";//下文main方法可生成token
+    public static String AID = "";
+    public static String SID = "";
+    public static String KEY = "";
+    public static String TOKEN = "";//下文main方法可生成token
 
     public static void main(String[] args) {
         //get token
