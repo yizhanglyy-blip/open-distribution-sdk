@@ -30,7 +30,7 @@ public class OrderDemo {
         OrderDemo demo = new OrderDemo();
 //        demo.bookingRequired();
 //        demo.bookingVerify();
-        demo.bookingRequiredInfo();
+        demo.book8();
 
 
     }
@@ -376,7 +376,7 @@ public class OrderDemo {
         questionAnswer_CARD_2.setQuestionCode("P_ID_CARD");//身份证
         questionAnswer_CARD_2.setAnswerList(Arrays.asList("340302200511025976"));//List<String>
         questionAnswerList2.add(questionAnswer_CARD_2);
-//这里注意，无论是一单一人还是一张一人的票，附加信息只需要传在出行人1即可，其余的出行人不需要传
+        //这里注意，无论是一单一人还是一张一人的票，附加信息只需要传在出行人1即可，其余的出行人不需要传
 
         passenger2.setPackageID(75891129L);
         passenger2.setResourceId(75891133L);
@@ -536,7 +536,7 @@ public class OrderDemo {
         List<Passenger> passengerList = new ArrayList<>();
         //出行人1
         Passenger passenger = new Passenger();
-        //出行人
+        //出行人1填写信息
         List<QuestionAnswer> questionAnswerList = new ArrayList<>();//出行人1填写信息List
         QuestionAnswer questionAnswer_FirstName = new QuestionAnswer();//姓名
         questionAnswer_FirstName.setQuestionID(3L);
@@ -552,7 +552,7 @@ public class OrderDemo {
 
         QuestionAnswer questionAnswer_P_PASSPORT = new QuestionAnswer();//护照
         questionAnswer_P_PASSPORT.setQuestionID(14L);
-        questionAnswer_P_PASSPORT.setQuestionCode("P_PASSPORT");//身份证
+        questionAnswer_P_PASSPORT.setQuestionCode("P_PASSPORT");//护照
         questionAnswer_P_PASSPORT.setAnswerList(Arrays.asList("146428737"));
         questionAnswerList.add(questionAnswer_P_PASSPORT);
 
@@ -568,6 +568,334 @@ public class OrderDemo {
         BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
         System.out.println(jsonObject);
         System.out.println(bookResponseType);
+    }
+
+    //4.3创建订单demo7 附加信息各种类型传参示例
+    public void book7() throws ApiException{
+        BookRequestType bookRequestType = new BookRequestType();
+
+        //站点、币种
+        bookRequestType.setLocale("zh-CN");
+        bookRequestType.setCurrency("CNY");
+        bookRequestType.setDistributorOrderID("test1-1234119915");//分销商订单id
+        //产品、套餐、资源
+        BasicOrder basicOrder= new BasicOrder();
+
+        List<OrderResource> orderResourceList = new ArrayList<>();
+        OrderResource orderResource = new OrderResource();
+        orderResource.setResourceID(76397579L);
+        orderResource.setUseDate("2025-09-29");
+        orderResource.setQuantity(1);
+        orderResource.setPrice(new BigDecimal("5.06"));
+        orderResourceList.add(orderResource);
+
+        basicOrder.setOrderResourceList(orderResourceList);
+        basicOrder.setProductID(76397577L);
+        basicOrder.setPackageID(76397578L);
+        basicOrder.setAmount(new BigDecimal("5.06"));
+        bookRequestType.setBasicOrder(basicOrder);
+        //联系人
+        Contact contact = new Contact();
+        contact.setName("藏三");
+        Mobile mobile = new Mobile();
+        mobile.setInternationalTelephoneCode("86");
+        mobile.setMobileNumber("18226998070");
+        contact.setMobile(mobile);
+        bookRequestType.setContact(contact);
+        //出行人List
+        List<Passenger> passengerList = new ArrayList<>();
+        //出行人1
+        Passenger passenger = new Passenger();
+        //出行人1填写信息
+        List<QuestionAnswer> questionAnswerList = new ArrayList<>();//出行人1填写信息List
+        QuestionAnswer questionAnswer_CName = new QuestionAnswer();//姓名
+        questionAnswer_CName.setQuestionID(3L);
+        questionAnswer_CName.setQuestionCode("P_CNAME");//中文名
+        questionAnswer_CName.setAnswerList(Arrays.asList("张三"));
+        questionAnswerList.add(questionAnswer_CName);
+
+        QuestionAnswer questionAnswer_P_ID_CARD = new QuestionAnswer();//身份证
+        questionAnswer_P_ID_CARD.setQuestionID(13L);
+        questionAnswer_P_ID_CARD.setQuestionCode("P_ID_CARD");//身份证
+        questionAnswer_P_ID_CARD.setAnswerList(Arrays.asList("3403BvTF413ZJiC937"));
+        questionAnswerList.add(questionAnswer_P_ID_CARD);
+
+        //以下是各类附加信息传参示例
+        //1.EUMN
+        QuestionAnswer questionAnswer_A_MEETING_POINT = new QuestionAnswer();
+        questionAnswer_A_MEETING_POINT.setQuestionID(5L);
+        questionAnswer_A_MEETING_POINT.setQuestionCode("A_MEETING_POINT");
+        questionAnswer_A_MEETING_POINT.setAnswerList(Arrays.asList("170375087"));
+        questionAnswerList.add(questionAnswer_A_MEETING_POINT);
+        //2.TIME
+        QuestionAnswer questionAnswer_A_CUSTOMIZED_TIME = new QuestionAnswer();
+        questionAnswer_A_CUSTOMIZED_TIME.setQuestionID(16L);
+        questionAnswer_A_CUSTOMIZED_TIME.setQuestionCode("A_CUSTOMIZED");
+        questionAnswer_A_CUSTOMIZED_TIME.setAnswerList(Arrays.asList("22:03"));
+        questionAnswerList.add(questionAnswer_A_CUSTOMIZED_TIME);
+        //3.Number
+        QuestionAnswer questionAnswer_A_CUSTOMIZED_Number = new QuestionAnswer();
+        questionAnswer_A_CUSTOMIZED_Number.setQuestionID(71L);
+        questionAnswer_A_CUSTOMIZED_Number.setQuestionCode("A_CUSTOMIZED");
+        questionAnswer_A_CUSTOMIZED_Number.setAnswerList(Arrays.asList("5"));
+        questionAnswerList.add(questionAnswer_A_CUSTOMIZED_Number);
+        //4.Text
+        QuestionAnswer questionAnswer_A_CUSTOMIZED_TEXT = new QuestionAnswer();
+        questionAnswer_A_CUSTOMIZED_TEXT.setQuestionID(100L);
+        questionAnswer_A_CUSTOMIZED_TEXT.setQuestionCode("A_CUSTOMIZED");
+        questionAnswer_A_CUSTOMIZED_TEXT.setAnswerList(Arrays.asList("qr0000"));
+        questionAnswerList.add(questionAnswer_A_CUSTOMIZED_TEXT);
+        //5.Date
+        QuestionAnswer questionAnswer_A_CUSTOMIZED_DATE = new QuestionAnswer();
+        questionAnswer_A_CUSTOMIZED_DATE.setQuestionID(131L);
+        questionAnswer_A_CUSTOMIZED_DATE.setQuestionCode("A_CUSTOMIZED");
+        questionAnswer_A_CUSTOMIZED_DATE.setAnswerList(Arrays.asList("2022-09-08 21:43:32"));
+        questionAnswerList.add(questionAnswer_A_CUSTOMIZED_DATE);
+
+        passenger.setPackageID(76397578L);
+        passenger.setResourceId(76397579L);
+        passenger.setQuestionAnswerList(questionAnswerList);
+        passengerList.add(passenger);
+        bookRequestType.setPassengerList(passengerList);
+
+        //获取Response,JsonObject格式
+//        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
+//        System.out.println(jsonObject);
+        System.out.println(GsonUtil.toJson(bookResponseType));
+    }
+
+    //4.3创建订单demo8 出行人模板全部配置传参示例
+    public void book8() throws ApiException{
+        BookRequestType bookRequestType = new BookRequestType();
+
+        //站点、币种
+        bookRequestType.setLocale("zh-CN");
+        bookRequestType.setCurrency("CNY");
+        bookRequestType.setDistributorOrderID("test1-1234121977915");//分销商订单id
+        //产品、套餐、资源
+        BasicOrder basicOrder= new BasicOrder();
+
+        List<OrderResource> orderResourceList = new ArrayList<>();
+        OrderResource orderResource = new OrderResource();
+        orderResource.setResourceID(76527627L);
+        orderResource.setUseDate("2025-09-29");
+        orderResource.setQuantity(1);
+        orderResource.setPrice(new BigDecimal("60.67"));
+        orderResourceList.add(orderResource);
+
+        basicOrder.setOrderResourceList(orderResourceList);
+        basicOrder.setProductID(76527623L);
+        basicOrder.setPackageID(76527624L);
+        basicOrder.setAmount(new BigDecimal("60.67"));
+        bookRequestType.setBasicOrder(basicOrder);
+        //联系人
+        Contact contact = new Contact();
+        contact.setName("藏三");
+        Mobile mobile = new Mobile();
+        mobile.setInternationalTelephoneCode("86");
+        mobile.setMobileNumber("18226998070");
+        contact.setMobile(mobile);
+        bookRequestType.setContact(contact);
+        //出行人List
+        List<Passenger> passengerList = new ArrayList<>();
+        //出行人1
+        Passenger passenger = new Passenger();
+        //出行人1填写信息
+        List<QuestionAnswer> questionAnswerList = new ArrayList<>();//出行人1填写信息List
+        QuestionAnswer questionAnswer_CName = new QuestionAnswer();//姓名
+        questionAnswer_CName.setQuestionID(3L);
+        questionAnswer_CName.setQuestionCode("P_CNAME");//中文名
+        questionAnswer_CName.setAnswerList(Arrays.asList("张三"));
+        questionAnswerList.add(questionAnswer_CName);
+
+        QuestionAnswer questionAnswer_P_COUNTRY_OR_DISTRICT = new QuestionAnswer();//国家或地区
+        questionAnswer_P_COUNTRY_OR_DISTRICT.setQuestionID(4L);
+        questionAnswer_P_COUNTRY_OR_DISTRICT.setQuestionCode("P_COUNTRY_OR_DISTRICT");//国家或地区
+        questionAnswer_P_COUNTRY_OR_DISTRICT.setAnswerList(Arrays.asList("CN"));//中国
+        questionAnswerList.add(questionAnswer_P_COUNTRY_OR_DISTRICT);
+
+        QuestionAnswer questionAnswer_P_GENDER = new QuestionAnswer();//性别
+        questionAnswer_P_GENDER.setQuestionID(6L);
+        questionAnswer_P_GENDER.setQuestionCode("P_GENDER");//身份证
+        questionAnswer_P_GENDER.setAnswerList(Arrays.asList("M"));//女F, 男M
+        questionAnswerList.add(questionAnswer_P_GENDER);
+
+        QuestionAnswer questionAnswer_P_BIRTHDAY = new QuestionAnswer();//生日
+        questionAnswer_P_BIRTHDAY.setQuestionID(8L);
+        questionAnswer_P_BIRTHDAY.setQuestionCode("P_BIRTHDAY");//生日
+        questionAnswer_P_BIRTHDAY.setAnswerList(Arrays.asList("2019-09-04"));
+        questionAnswerList.add(questionAnswer_P_BIRTHDAY);
+
+        QuestionAnswer questionAnswer_P_TELPHONE = new QuestionAnswer();//电话号码
+        questionAnswer_P_TELPHONE.setQuestionID(11L);
+        questionAnswer_P_TELPHONE.setQuestionCode("P_TELPHONE");//电话号码
+        questionAnswer_P_TELPHONE.setAnswerList(Arrays.asList("18226998090"));
+        questionAnswerList.add(questionAnswer_P_TELPHONE);
+
+        QuestionAnswer questionAnswer_P_TELPHONE_AREA_CODE = new QuestionAnswer();//电话号码区号
+        questionAnswer_P_TELPHONE_AREA_CODE.setQuestionID(11L);
+        questionAnswer_P_TELPHONE_AREA_CODE.setQuestionCode("P_TELPHONE_AREA_CODE");//电话号码区号
+        questionAnswer_P_TELPHONE_AREA_CODE.setAnswerList(Arrays.asList("86"));
+        questionAnswerList.add(questionAnswer_P_TELPHONE_AREA_CODE);
+
+        QuestionAnswer questionAnswer_P_VALIDITY = new QuestionAnswer();//证件有效期
+        questionAnswer_P_VALIDITY.setQuestionID(10L);
+        questionAnswer_P_VALIDITY.setQuestionCode("P_VALIDITY");//证件有效期
+        questionAnswer_P_VALIDITY.setAnswerList(Arrays.asList("2029-09-30"));
+        questionAnswerList.add(questionAnswer_P_VALIDITY);
+
+        QuestionAnswer questionAnswer_P_ISSUEDATE = new QuestionAnswer();//证件签发日期
+        questionAnswer_P_ISSUEDATE.setQuestionID(500L);
+        questionAnswer_P_ISSUEDATE.setQuestionCode("P_ISSUEDATE");//证件有效期
+        questionAnswer_P_ISSUEDATE.setAnswerList(Arrays.asList("2026-09-30"));
+        questionAnswerList.add(questionAnswer_P_ISSUEDATE);
+
+        QuestionAnswer questionAnswer_P_ID_CARD = new QuestionAnswer();//身份证
+        questionAnswer_P_ID_CARD.setQuestionID(13L);
+        questionAnswer_P_ID_CARD.setQuestionCode("P_ID_CARD");//身份证
+        questionAnswer_P_ID_CARD.setAnswerList(Arrays.asList("3403BvTF413ZJiC937"));
+        questionAnswerList.add(questionAnswer_P_ID_CARD);
+
+        QuestionAnswer questionAnswer_P_PASSPORT = new QuestionAnswer();//护照
+        questionAnswer_P_PASSPORT.setQuestionID(14L);
+        questionAnswer_P_PASSPORT.setQuestionCode("P_PASSPORT");//护照
+        questionAnswer_P_PASSPORT.setAnswerList(Arrays.asList("146428737"));
+        questionAnswerList.add(questionAnswer_P_PASSPORT);
+
+        QuestionAnswer questionAnswer_P_HONGKONG_MACAO_PASS = new QuestionAnswer();//港澳通行证
+        questionAnswer_P_HONGKONG_MACAO_PASS.setQuestionID(20L);
+        questionAnswer_P_HONGKONG_MACAO_PASS.setQuestionCode("P_HONGKONG_MACAO_PASS");//港澳通行证
+        questionAnswer_P_HONGKONG_MACAO_PASS.setAnswerList(Arrays.asList("C12345678"));
+        questionAnswerList.add(questionAnswer_P_HONGKONG_MACAO_PASS);
+
+        QuestionAnswer questionAnswer_P_TAIWAN_PASS = new QuestionAnswer();//台湾通行证
+        questionAnswer_P_TAIWAN_PASS.setQuestionID(20L);
+        questionAnswer_P_TAIWAN_PASS.setQuestionCode("P_TAIWAN_PASS");//台湾通行证
+        questionAnswer_P_TAIWAN_PASS.setAnswerList(Arrays.asList("W12345678"));
+        questionAnswerList.add(questionAnswer_P_TAIWAN_PASS);
+        //todo
+        QuestionAnswer questionAnswer_P_DRIVING_LICENSE = new QuestionAnswer();//驾驶证
+        questionAnswer_P_DRIVING_LICENSE.setQuestionID(17L);
+        questionAnswer_P_DRIVING_LICENSE.setQuestionCode("P_DRIVING_LICENSE");//驾驶证
+        questionAnswer_P_DRIVING_LICENSE.setAnswerList(Arrays.asList("11010519800101201X"));
+        questionAnswerList.add(questionAnswer_P_DRIVING_LICENSE);
+
+        QuestionAnswer questionAnswer_P_TAIWANESE_COMPATRIOTS = new QuestionAnswer();//台胞证
+        questionAnswer_P_TAIWANESE_COMPATRIOTS.setQuestionID(19L);
+        questionAnswer_P_TAIWANESE_COMPATRIOTS.setQuestionCode("P_TAIWANESE_COMPATRIOTS");//台胞证
+        questionAnswer_P_TAIWANESE_COMPATRIOTS.setAnswerList(Arrays.asList("820000198501011234"));
+        questionAnswerList.add(questionAnswer_P_TAIWANESE_COMPATRIOTS);
+
+        QuestionAnswer questionAnswer_P_HOME_VISITING_CERTIFICATE = new QuestionAnswer();//回乡证
+        questionAnswer_P_HOME_VISITING_CERTIFICATE.setQuestionID(18L);
+        questionAnswer_P_HOME_VISITING_CERTIFICATE.setQuestionCode("P_HOME_VISITING_CERTIFICATE");//回乡证
+        questionAnswer_P_HOME_VISITING_CERTIFICATE.setAnswerList(Arrays.asList("H810000019871215001"));
+        questionAnswerList.add(questionAnswer_P_HOME_VISITING_CERTIFICATE);
+
+        QuestionAnswer questionAnswer_P_MILITARY_ID = new QuestionAnswer();//军官证
+        questionAnswer_P_MILITARY_ID.setQuestionID(16L);
+        questionAnswer_P_MILITARY_ID.setQuestionCode("P_MILITARY_ID");//军官证
+        questionAnswer_P_MILITARY_ID.setAnswerList(Arrays.asList(""));
+        questionAnswerList.add(questionAnswer_P_MILITARY_ID);
+
+        QuestionAnswer questionAnswer_P_STUDENT_CARD = new QuestionAnswer();//学生证
+        questionAnswer_P_STUDENT_CARD.setQuestionID(15L);
+        questionAnswer_P_STUDENT_CARD.setQuestionCode("P_STUDENT_CARD");//学生证
+        questionAnswer_P_STUDENT_CARD.setAnswerList(Arrays.asList("202305120315"));
+        questionAnswerList.add(questionAnswer_P_STUDENT_CARD);
+
+        QuestionAnswer questionAnswer_P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD = new QuestionAnswer();//港澳台居民居住证
+        questionAnswer_P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD.setQuestionID(37L);
+        questionAnswer_P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD.setQuestionCode("P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD");//港澳台居民居住证
+        questionAnswer_P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD.setAnswerList(Arrays.asList("810000199508126017"));
+        questionAnswerList.add(questionAnswer_P_HONGKONG_MACAU_TAIWAN_RESIDENT_IDENTITY_CARD);
+
+        QuestionAnswer questionAnswer_P_THAILAND_WORK_PERMIT = new QuestionAnswer();//泰国工作许可证
+        questionAnswer_P_THAILAND_WORK_PERMIT.setQuestionID(38L);
+        questionAnswer_P_THAILAND_WORK_PERMIT.setQuestionCode("P_THAILAND_WORK_PERMIT");//泰国工作许可证
+        questionAnswer_P_THAILAND_WORK_PERMIT.setAnswerList(Arrays.asList("WP-2567-0012345"));
+        questionAnswerList.add(questionAnswer_P_THAILAND_WORK_PERMIT);
+
+        QuestionAnswer questionAnswer_P_INDONESIA_RESIDENCE_VISA = new QuestionAnswer();//印尼居留签证
+        questionAnswer_P_INDONESIA_RESIDENCE_VISA.setQuestionID(39L);
+        questionAnswer_P_INDONESIA_RESIDENCE_VISA.setQuestionCode("P_INDONESIA_RESIDENCE_VISA");//印尼居留签证
+        questionAnswer_P_INDONESIA_RESIDENCE_VISA.setAnswerList(Arrays.asList("KITAS.24.0123456.DXN"));
+        questionAnswerList.add(questionAnswer_P_INDONESIA_RESIDENCE_VISA);
+
+        QuestionAnswer questionAnswer_P_INTERNATIONAL_STUDENT_ID_CARD = new QuestionAnswer();//国际学生证
+        questionAnswer_P_INTERNATIONAL_STUDENT_ID_CARD.setQuestionID(40L);
+        questionAnswer_P_INTERNATIONAL_STUDENT_ID_CARD.setQuestionCode("P_INTERNATIONAL_STUDENT_ID_CARD");//国际学生证
+        questionAnswer_P_INTERNATIONAL_STUDENT_ID_CARD.setAnswerList(Arrays.asList("9991234567895"));
+        questionAnswerList.add(questionAnswer_P_INTERNATIONAL_STUDENT_ID_CARD);
+
+        QuestionAnswer questionAnswer_P_PERMANENT_RESIDENCE_CARD_FOREIGNERS = new QuestionAnswer();//外国人永久居留身份证
+        questionAnswer_P_PERMANENT_RESIDENCE_CARD_FOREIGNERS.setQuestionID(41L);
+        questionAnswer_P_PERMANENT_RESIDENCE_CARD_FOREIGNERS.setQuestionCode("P_PERMANENT_RESIDENCE_CARD_FOREIGNERS");//外国人永久居留身份证
+        questionAnswer_P_PERMANENT_RESIDENCE_CARD_FOREIGNERS.setAnswerList(Arrays.asList("USA0PY198401011234"));
+        questionAnswerList.add(questionAnswer_P_PERMANENT_RESIDENCE_CARD_FOREIGNERS);
+
+        QuestionAnswer questionAnswer_P_TAIWAN_NATIONAL_ID_CARD = new QuestionAnswer();//国民身份证 （台湾）
+        questionAnswer_P_TAIWAN_NATIONAL_ID_CARD.setQuestionID(42L);
+        questionAnswer_P_TAIWAN_NATIONAL_ID_CARD.setQuestionCode("P_TAIWAN_NATIONAL_ID_CARD");//国民身份证 （台湾）
+        questionAnswer_P_TAIWAN_NATIONAL_ID_CARD.setAnswerList(Arrays.asList("A123456789"));
+        questionAnswerList.add(questionAnswer_P_TAIWAN_NATIONAL_ID_CARD);
+
+        QuestionAnswer questionAnswer_P_HONGKONG_PERMANENT_IDENTITY_CARD = new QuestionAnswer();//香港永久居民身份证
+        questionAnswer_P_HONGKONG_PERMANENT_IDENTITY_CARD.setQuestionID(43L);
+        questionAnswer_P_HONGKONG_PERMANENT_IDENTITY_CARD.setQuestionCode("P_HONGKONG_PERMANENT_IDENTITY_CARD");//香港永久居民身份证
+        questionAnswer_P_HONGKONG_PERMANENT_IDENTITY_CARD.setAnswerList(Arrays.asList("Y123456(1)"));
+        questionAnswerList.add(questionAnswer_P_HONGKONG_PERMANENT_IDENTITY_CARD);
+
+        QuestionAnswer questionAnswer_P_HONGKONG_IDENTITY_CARD = new QuestionAnswer();//香港居民身份证
+        questionAnswer_P_HONGKONG_IDENTITY_CARD.setQuestionID(44L);
+        questionAnswer_P_HONGKONG_IDENTITY_CARD.setQuestionCode("P_HONGKONG_IDENTITY_CARD");//香港居民身份证
+        questionAnswer_P_HONGKONG_IDENTITY_CARD.setAnswerList(Arrays.asList("AB987654(3)"));
+        questionAnswerList.add(questionAnswer_P_HONGKONG_IDENTITY_CARD);
+
+        QuestionAnswer questionAnswer_P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD = new QuestionAnswer();//澳门永久居民身份证
+        questionAnswer_P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD.setQuestionID(45L);
+        questionAnswer_P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD.setQuestionCode("P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD");//澳门永久居民身份证
+        questionAnswer_P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD.setAnswerList(Arrays.asList("7654321(6)"));
+        questionAnswerList.add(questionAnswer_P_MACAU_ERMANENT_RESIDENT_IDENTITY_CARD);
+
+        QuestionAnswer questionAnswer_P_MACAU_RESIDENT_IDENTITY_CARD = new QuestionAnswer();//澳门居民身份证
+        questionAnswer_P_MACAU_RESIDENT_IDENTITY_CARD.setQuestionID(46L);
+        questionAnswer_P_MACAU_RESIDENT_IDENTITY_CARD.setQuestionCode("P_MACAU_RESIDENT_IDENTITY_CARD");//澳门居民身份证
+        questionAnswer_P_MACAU_RESIDENT_IDENTITY_CARD.setAnswerList(Arrays.asList("5123456(8)"));
+        questionAnswerList.add(questionAnswer_P_MACAU_RESIDENT_IDENTITY_CARD);
+
+        QuestionAnswer questionAnswer_P_TH_ID_CARD = new QuestionAnswer();//泰国身份证
+        questionAnswer_P_TH_ID_CARD.setQuestionID(47L);
+        questionAnswer_P_TH_ID_CARD.setQuestionCode("P_TH_ID_CARD");//泰国身份证
+        questionAnswer_P_TH_ID_CARD.setAnswerList(Arrays.asList("3103700012851"));
+        questionAnswerList.add(questionAnswer_P_TH_ID_CARD);
+
+        QuestionAnswer questionAnswer_P_MY_ID_CARD = new QuestionAnswer();//马来西亚身份证（大马卡）
+        questionAnswer_P_MY_ID_CARD.setQuestionID(48L);
+        questionAnswer_P_MY_ID_CARD.setQuestionCode("P_TH_ID_CARD");//马来西亚身份证（大马卡）
+        questionAnswer_P_MY_ID_CARD.setAnswerList(Arrays.asList("900115100001"));
+        questionAnswerList.add(questionAnswer_P_MY_ID_CARD);
+
+        QuestionAnswer questionAnswer_P_ID_ID_CARD = new QuestionAnswer();//印尼身份证
+        questionAnswer_P_ID_ID_CARD.setQuestionID(49L);
+        questionAnswer_P_ID_ID_CARD.setQuestionCode("P_TH_ID_CARD");//印尼身份证
+        questionAnswer_P_ID_ID_CARD.setAnswerList(Arrays.asList("3175035407890001"));
+        questionAnswerList.add(questionAnswer_P_ID_ID_CARD);
+
+        passenger.setPackageID(76527624L);
+        passenger.setResourceId(76527627L);
+        passenger.setQuestionAnswerList(questionAnswerList);
+        passengerList.add(passenger);
+        bookRequestType.setPassengerList(passengerList);
+
+        //获取Response,JsonObject格式
+//        JsonObject jsonObject = orderClient.bookJsonObject(bookRequestType,"a0fc8c6cf3524a31814f700490071f91");
+        //获取Response,API dto格式
+        BookResponseType bookResponseType = orderClient.book(bookRequestType, "a0fc8c6cf3524a31814f700490071f91");
+//        System.out.println(jsonObject);
+        System.out.println(GsonUtil.toJson(bookResponseType));
     }
 
     //4.4获取订单状态demo

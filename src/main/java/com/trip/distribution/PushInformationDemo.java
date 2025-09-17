@@ -20,7 +20,7 @@ public class PushInformationDemo {
     public static void main(String[] args) throws Exception {
         PushInformationDemo pushInformationDemo = new PushInformationDemo();
         String signature = pushInformationDemo.HmacSHA1Encrypt("" + AID + SID +
-                        "{\"orderid\":\"12345678\",\"distributororderid\":\"123456789\",\"type\":\"1\",\"orderchangetype\":\"1\"}",
+                        "{\"orderid\":\"1128170612381653\",\"distributororderid\":\"202509111527522819\",\"type\":\"1\",\"orderchangetype\":\"1\"}",
                          KEY);
         System.out.println(signature);
 
