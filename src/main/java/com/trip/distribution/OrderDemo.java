@@ -673,7 +673,7 @@ public class OrderDemo {
         //站点、币种
         bookRequestType.setLocale("zh-CN");
         bookRequestType.setCurrency("CNY");
-        bookRequestType.setDistributorOrderID("test1-1234121977915");//分销商订单id
+        bookRequestType.setDistributorOrderID("test1-123994121977915");//分销商订单id
         //产品、套餐、资源
         BasicOrder basicOrder= new BasicOrder();
 
@@ -682,13 +682,13 @@ public class OrderDemo {
         orderResource.setResourceID(76527627L);
         orderResource.setUseDate("2025-09-29");
         orderResource.setQuantity(1);
-        orderResource.setPrice(new BigDecimal("60.67"));
+        orderResource.setPrice(new BigDecimal("60.45"));
         orderResourceList.add(orderResource);
 
         basicOrder.setOrderResourceList(orderResourceList);
         basicOrder.setProductID(76527623L);
         basicOrder.setPackageID(76527624L);
-        basicOrder.setAmount(new BigDecimal("60.67"));
+        basicOrder.setAmount(new BigDecimal("60.45"));
         bookRequestType.setBasicOrder(basicOrder);
         //联系人
         Contact contact = new Contact();

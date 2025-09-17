@@ -13,7 +13,7 @@ public class AccountParams {
     public static String AID = "64019593";
     public static String SID = "190123564";
     public static String KEY = "ba7b02f800514f2c9ccbe952386fd674";
-    public static String TOKEN = "69f9b4385f1f432e9d2233b88ce278a0";//下文main方法可生成token
+    public static String TOKEN = "20b20a1c74d94d5fa4373c86f5a5d7c9";//下文main方法可生成token
 
     public static void main(String[] args) {
         //get token
