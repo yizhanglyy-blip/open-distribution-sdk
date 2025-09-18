@@ -673,7 +673,7 @@ public class OrderDemo {
         //站点、币种
         bookRequestType.setLocale("zh-CN");
         bookRequestType.setCurrency("CNY");
-        bookRequestType.setDistributorOrderID("test1-123994121977915");//分销商订单id
+        bookRequestType.setDistributorOrderID("test1-1239942121977915");//分销商订单id
         //产品、套餐、资源
         BasicOrder basicOrder= new BasicOrder();
 

@@ -16,6 +16,9 @@ public class Package{
     private List<RouteInfo> routeInfoList;
     private DeliveryInfo deliveryInfo;
     private String itineraryDesc;
+    private String highLights;
+    private String groupModeName;
+    private List<DistrictInfoType> districtInfos;
 
     public Long getPackageID() {
         return packageID;
@@ -159,6 +162,15 @@ public class Package{
         private List<ResourceAdditionInfoType> resourceAdditionInfoList;
         private List<SubResource> subResourceList;
         private Boolean isPrivatePrice;
+        private Integer waitType;
+
+        public Integer getWaitType() {
+            return waitType;
+        }
+
+        public void setWaitType(Integer waitType) {
+            this.waitType = waitType;
+        }
 
         public Long getResourceID() {
             return resourceID;
@@ -578,6 +590,27 @@ public class Package{
 
         public void setType(Integer type) {
             this.type = type;
+        }
+    }
+
+    public static class DistrictInfoType{
+        private Long districtId;
+        private Integer cityId;
+
+        public Long getDistrictId() {
+            return districtId;
+        }
+
+        public void setDistrictId(Long districtId) {
+            this.districtId = districtId;
+        }
+
+        public Integer getCityId() {
+            return cityId;
+        }
+
+        public void setCityId(Integer cityId) {
+            this.cityId = cityId;
         }
     }
 }
