@@ -673,7 +673,7 @@ public class OrderDemo {
         //站点、币种
         bookRequestType.setLocale("zh-CN");
         bookRequestType.setCurrency("CNY");
-        bookRequestType.setDistributorOrderID("test1-1239942121977915");//分销商订单id
+        bookRequestType.setDistributorOrderID("test1-12399421219772915");//分销商订单id
         //产品、套餐、资源
         BasicOrder basicOrder= new BasicOrder();
 
@@ -748,9 +748,15 @@ public class OrderDemo {
 
         QuestionAnswer questionAnswer_P_ISSUEDATE = new QuestionAnswer();//证件签发日期
         questionAnswer_P_ISSUEDATE.setQuestionID(500L);
-        questionAnswer_P_ISSUEDATE.setQuestionCode("P_ISSUEDATE");//证件有效期
+        questionAnswer_P_ISSUEDATE.setQuestionCode("P_ISSUEDATE");//证件签发日期
         questionAnswer_P_ISSUEDATE.setAnswerList(Arrays.asList("2026-09-30"));
         questionAnswerList.add(questionAnswer_P_ISSUEDATE);
+
+        QuestionAnswer questionAnswer_P_TAIWANESE_COMPATRIOTS_TIME = new QuestionAnswer();//签发次数
+        questionAnswer_P_TAIWANESE_COMPATRIOTS_TIME.setQuestionID(600L);
+        questionAnswer_P_TAIWANESE_COMPATRIOTS_TIME.setQuestionCode("P_TAIWANESE_COMPATRIOTS_TIME");//签发次数
+        questionAnswer_P_TAIWANESE_COMPATRIOTS_TIME.setAnswerList(Arrays.asList("2"));
+        questionAnswerList.add(questionAnswer_P_TAIWANESE_COMPATRIOTS_TIME);
 
         QuestionAnswer questionAnswer_P_ID_CARD = new QuestionAnswer();//身份证
         questionAnswer_P_ID_CARD.setQuestionID(13L);
