@@ -18,7 +18,7 @@ public class Package{
     private String itineraryDesc;
     private String highLights;
     private String groupModeName;
-    private List<DistrictInfoType> districtInfos;
+    private List<DistrictInfoType> departureList;
 
     public Long getPackageID() {
         return packageID;
@@ -114,6 +114,30 @@ public class Package{
 
     public void setItineraryDesc(String itineraryDesc) {
         this.itineraryDesc = itineraryDesc;
+    }
+
+    public String getHighLights() {
+        return highLights;
+    }
+
+    public void setHighLights(String highLights) {
+        this.highLights = highLights;
+    }
+
+    public String getGroupModeName() {
+        return groupModeName;
+    }
+
+    public void setGroupModeName(String groupModeName) {
+        this.groupModeName = groupModeName;
+    }
+
+    public List<DistrictInfoType> getDepartureList() {
+        return departureList;
+    }
+
+    public void setDepartureList(List<DistrictInfoType> departureList) {
+        this.departureList = departureList;
     }
 
     public static class AdvanceBooking{
@@ -594,23 +618,23 @@ public class Package{
     }
 
     public static class DistrictInfoType{
-        private Long districtId;
-        private Integer cityId;
+        private Long locationID;
+        private String type;
 
-        public Long getDistrictId() {
-            return districtId;
+        public Long getLocationID() {
+            return locationID;
         }
 
-        public void setDistrictId(Long districtId) {
-            this.districtId = districtId;
+        public void setLocationID(Long locationID) {
+            this.locationID = locationID;
         }
 
-        public Integer getCityId() {
-            return cityId;
+        public String getType() {
+            return type;
         }
 
-        public void setCityId(Integer cityId) {
-            this.cityId = cityId;
+        public void setType(String type) {
+            this.type = type;
         }
     }
 }
