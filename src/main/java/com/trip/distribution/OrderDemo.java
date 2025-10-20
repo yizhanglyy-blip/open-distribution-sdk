@@ -28,7 +28,7 @@ public class OrderDemo {
 
     public static void main(String[] args) throws ApiException {
         OrderDemo demo = new OrderDemo();
-//        demo.bookingRequired();
+//        demo.bookingRequiredInfo();
 //        demo.bookingVerify();
         demo.book8();
 
@@ -645,7 +645,7 @@ public class OrderDemo {
         questionAnswer_A_CUSTOMIZED_TEXT.setQuestionCode("A_CUSTOMIZED");
         questionAnswer_A_CUSTOMIZED_TEXT.setAnswerList(Arrays.asList("qr0000"));
         questionAnswerList.add(questionAnswer_A_CUSTOMIZED_TEXT);
-        //5.Date
+        //5.DATETIME
         QuestionAnswer questionAnswer_A_CUSTOMIZED_DATE = new QuestionAnswer();
         questionAnswer_A_CUSTOMIZED_DATE.setQuestionID(131L);
         questionAnswer_A_CUSTOMIZED_DATE.setQuestionCode("A_CUSTOMIZED");
