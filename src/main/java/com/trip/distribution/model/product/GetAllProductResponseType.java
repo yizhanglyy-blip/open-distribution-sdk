@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class GetAllProductResponseType {
-    @SerializedName("ResponseStatus")
     private JsonObject ResponseStatus;
     private Boolean success;
     private String errcode;

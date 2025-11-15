@@ -1,14 +1,11 @@
 package com.trip.distribution.model.product;
 
 import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
-
 import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductDetailResponseType {
     private ProductDetailData data;
-    @SerializedName("ResponseStatus")
     private JsonObject ResponseStatus;
     private Boolean success;
     private String errcode;
@@ -122,6 +119,7 @@ public class ProductDetailResponseType {
         private String marketPriceCurrency;
         private Integer type;
         private EduCertificationInfoType eduCertificationInfo;
+        private boolean isPackage;
 
         public Long getProductID() {
             return productID;
@@ -561,6 +559,14 @@ public class ProductDetailResponseType {
 
         public void setEduCertificationInfo(EduCertificationInfoType eduCertificationInfo) {
             this.eduCertificationInfo = eduCertificationInfo;
+        }
+
+        public boolean isPackage() {
+            return isPackage;
+        }
+
+        public void setPackage(boolean aPackage) {
+            isPackage = aPackage;
         }
     }
 

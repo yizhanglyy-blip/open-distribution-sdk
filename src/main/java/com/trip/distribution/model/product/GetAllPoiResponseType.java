@@ -1,13 +1,10 @@
 package com.trip.distribution.model.product;
 
 import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class GetAllPoiResponseType {
-    @SerializedName("ResponseStatus")
-    private JsonObject responseStatus;
+    private JsonObject ResponseStatus;
     private Boolean success;
     private String errcode;
     private String errmsg;
@@ -15,11 +12,11 @@ public class GetAllPoiResponseType {
     private String maxId;
 
     public JsonObject getResponseStatus() {
-        return responseStatus;
+        return ResponseStatus;
     }
 
     public void setResponseStatus(JsonObject responseStatus) {
-        this.responseStatus = responseStatus;
+        ResponseStatus = responseStatus;
     }
 
     public Boolean getSuccess() {

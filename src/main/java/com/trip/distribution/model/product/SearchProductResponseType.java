@@ -1,14 +1,11 @@
 package com.trip.distribution.model.product;
 
 import com.google.gson.JsonObject;
-import com.google.gson.annotations.SerializedName;
-
 import java.math.BigDecimal;
 import java.util.List;
 
 public class SearchProductResponseType {
     private SearchProductData data;
-    @SerializedName("ResponseStatus")
     private JsonObject ResponseStatus;
     private Boolean success;
     private String errcode;
