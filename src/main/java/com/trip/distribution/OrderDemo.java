@@ -791,13 +791,13 @@ public class OrderDemo {
         QuestionAnswer questionAnswer_P_TAIWANESE_COMPATRIOTS = new QuestionAnswer();//台胞证
         questionAnswer_P_TAIWANESE_COMPATRIOTS.setQuestionID(19L);
         questionAnswer_P_TAIWANESE_COMPATRIOTS.setQuestionCode("P_TAIWANESE_COMPATRIOTS");//台胞证
-        questionAnswer_P_TAIWANESE_COMPATRIOTS.setAnswerList(Arrays.asList("820000198501011234"));
+        questionAnswer_P_TAIWANESE_COMPATRIOTS.setAnswerList(Arrays.asList("12345678"));
         questionAnswerList.add(questionAnswer_P_TAIWANESE_COMPATRIOTS);
 
         QuestionAnswer questionAnswer_P_HOME_VISITING_CERTIFICATE = new QuestionAnswer();//回乡证
         questionAnswer_P_HOME_VISITING_CERTIFICATE.setQuestionID(18L);
         questionAnswer_P_HOME_VISITING_CERTIFICATE.setQuestionCode("P_HOME_VISITING_CERTIFICATE");//回乡证
-        questionAnswer_P_HOME_VISITING_CERTIFICATE.setAnswerList(Arrays.asList("H810000019871215001"));
+        questionAnswer_P_HOME_VISITING_CERTIFICATE.setAnswerList(Arrays.asList("H12345678"));
         questionAnswerList.add(questionAnswer_P_HOME_VISITING_CERTIFICATE);
 
         QuestionAnswer questionAnswer_P_MILITARY_ID = new QuestionAnswer();//军官证

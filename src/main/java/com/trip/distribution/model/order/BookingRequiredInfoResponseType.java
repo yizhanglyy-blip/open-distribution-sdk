@@ -55,6 +55,7 @@ public class BookingRequiredInfoResponseType {
     public static class BookingRequiredInfoData{
         private ContactRequried contact;
         private List<Question> passengerQuestionList;
+        private BookingLimit bookingLimit;
 
         public ContactRequried getContact() {
             return contact;
@@ -71,6 +72,14 @@ public class BookingRequiredInfoResponseType {
         public void setPassengerQuestionList(List<Question> passengerQuestionList) {
             this.passengerQuestionList = passengerQuestionList;
         }
+
+        public BookingLimit getBookingLimit() {
+            return bookingLimit;
+        }
+
+        public void setBookingLimit(BookingLimit bookingLimit) {
+            this.bookingLimit = bookingLimit;
+        }
     }
     
     
@@ -79,9 +88,14 @@ public class BookingRequiredInfoResponseType {
         private Boolean mobileRequried;
         private Boolean emailRequried;
         private Boolean deliveryRequried;
+
+        private Boolean nameRequired;
+        private Boolean mobileRequired;
+        private Boolean emailRequired;
+        private Boolean deliveryRequired;
+
         private Boolean imRequired;
         private List<ContactItem> contactItemList;
-        private Integer mobileLimit;
 
         public Boolean getNameRequried() {
             return nameRequried;
@@ -115,6 +129,38 @@ public class BookingRequiredInfoResponseType {
             this.deliveryRequried = deliveryRequried;
         }
 
+        public Boolean getNameRequired() {
+            return nameRequired;
+        }
+
+        public void setNameRequired(Boolean nameRequired) {
+            this.nameRequired = nameRequired;
+        }
+
+        public Boolean getMobileRequired() {
+            return mobileRequired;
+        }
+
+        public void setMobileRequired(Boolean mobileRequired) {
+            this.mobileRequired = mobileRequired;
+        }
+
+        public Boolean getEmailRequired() {
+            return emailRequired;
+        }
+
+        public void setEmailRequired(Boolean emailRequired) {
+            this.emailRequired = emailRequired;
+        }
+
+        public Boolean getDeliveryRequired() {
+            return deliveryRequired;
+        }
+
+        public void setDeliveryRequired(Boolean deliveryRequired) {
+            this.deliveryRequired = deliveryRequired;
+        }
+
         public Boolean getImRequired() {
             return imRequired;
         }
@@ -129,14 +175,6 @@ public class BookingRequiredInfoResponseType {
 
         public void setContactItemList(List<ContactItem> contactItemList) {
             this.contactItemList = contactItemList;
-        }
-
-        public Integer getMobileLimit() {
-            return mobileLimit;
-        }
-
-        public void setMobileLimit(Integer mobileLimit) {
-            this.mobileLimit = mobileLimit;
         }
     }
 
@@ -274,6 +312,18 @@ public class BookingRequiredInfoResponseType {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+    }
+
+    public static class BookingLimit{
+        private Integer limit;
+
+        public Integer getLimit() {
+            return limit;
+        }
+
+        public void setLimit(Integer limit) {
+            this.limit = limit;
         }
     }
     

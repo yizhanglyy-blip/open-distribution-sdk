@@ -119,7 +119,9 @@ public class ProductDetailResponseType {
         private String marketPriceCurrency;
         private Integer type;
         private EduCertificationInfoType eduCertificationInfo;
-        private boolean isPackage;
+        private Long firstLevelSaleUnitId;
+        private String firstLevelSaleUnitName;
+        private boolean isBundle;
 
         public Long getProductID() {
             return productID;
@@ -561,12 +563,28 @@ public class ProductDetailResponseType {
             this.eduCertificationInfo = eduCertificationInfo;
         }
 
-        public boolean isPackage() {
-            return isPackage;
+        public Long getFirstLevelSaleUnitId() {
+            return firstLevelSaleUnitId;
         }
 
-        public void setPackage(boolean aPackage) {
-            isPackage = aPackage;
+        public void setFirstLevelSaleUnitId(Long firstLevelSaleUnitId) {
+            this.firstLevelSaleUnitId = firstLevelSaleUnitId;
+        }
+
+        public String getFirstLevelSaleUnitName() {
+            return firstLevelSaleUnitName;
+        }
+
+        public void setFirstLevelSaleUnitName(String firstLevelSaleUnitName) {
+            this.firstLevelSaleUnitName = firstLevelSaleUnitName;
+        }
+
+        public boolean isBundle() {
+            return isBundle;
+        }
+
+        public void setBundle(boolean bundle) {
+            isBundle = bundle;
         }
     }
 
