@@ -645,11 +645,11 @@ public class OrderDemo {
         questionAnswer_A_CUSTOMIZED_TEXT.setQuestionCode("A_CUSTOMIZED");
         questionAnswer_A_CUSTOMIZED_TEXT.setAnswerList(Arrays.asList("qr0000"));
         questionAnswerList.add(questionAnswer_A_CUSTOMIZED_TEXT);
-        //5.DATETIME
+        //5.DATE
         QuestionAnswer questionAnswer_A_CUSTOMIZED_DATE = new QuestionAnswer();
         questionAnswer_A_CUSTOMIZED_DATE.setQuestionID(131L);
         questionAnswer_A_CUSTOMIZED_DATE.setQuestionCode("A_CUSTOMIZED");
-        questionAnswer_A_CUSTOMIZED_DATE.setAnswerList(Arrays.asList("2022-09-08 21:43:32"));
+        questionAnswer_A_CUSTOMIZED_DATE.setAnswerList(Arrays.asList("2022-09-08"));
         questionAnswerList.add(questionAnswer_A_CUSTOMIZED_DATE);
 
         passenger.setPackageID(76397578L);
